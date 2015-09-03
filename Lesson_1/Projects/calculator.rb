@@ -1,29 +1,45 @@
-=begin
-1)ask user for a number 
-2)ask user for another number
-3) if user enters an invalid character go back to question
-4) perform calculation on both numbers
-=end
 
-
-puts "Please enter your first number"
-num1= gets.chomp
-
-puts "Please enter your second number"
-num2=gets.chomp
-
-puts "Please choose an operation: add, subtract, multiply, divide"
-operation=gets.chomp
-
-if operation == "add"
-  result = num1.to_i + num2.to_i
-elsif operation == "subtract"
-  result = num1.to_i - num2.to_i
-elsif operation == "multiply"
-  result = num1.to_i * num2.to_i
-elsif operation == "divide"
-  result= num1.to_f / num2.to_f
+def enter_number()
+  puts "Please enter a number:"
+  return
 end
 
-puts "Your result is #{result}"
+def type_of_operation()
+  puts "Please enter a command"
+  puts " add\n subtract\n multiply\n divide\n exit"
+  return
+end
 
+while true
+
+  enter_number()
+  num1=gets.chomp
+  
+  enter_number()
+  num2=gets.chomp
+
+  type_of_operation()
+  command=gets.chomp
+  
+  if command == 'exit'
+    puts "You have chosen to exit this program. Good-Bye."
+    break
+  end
+
+
+
+  if command == "add"
+    result = num1.to_i + num2.to_i
+  elsif command == "subtract"
+    result = num1.to_i - num2.to_i
+  elsif command == "multiply"
+    result = num1.to_i * num2.to_i
+  elsif command == "divide"
+    result= num1.to_f / num2.to_f
+  else
+    result="You have chosen to end the program. Good-Bye"
+  end
+
+puts "RESULT: #{result}"
+
+end
