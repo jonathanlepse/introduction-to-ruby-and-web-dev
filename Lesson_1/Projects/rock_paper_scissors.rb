@@ -2,12 +2,13 @@ puts "Welcome to the game!"
 
 CHOICES=["rock", "paper", "scissors"]
 
-loop do
+ask_again = " "
+while ask_again != 'no'
+
+begin
 puts "Choose one: (rock/paper/scissors)"
 player_choice=gets.chomp
-break if CHOICES.include?(player_choice)
-puts "Please pick only rock, paper or scissors"
-end
+end until CHOICES.include?(player_choice)
 
 computer_choice=CHOICES.sample
 
@@ -19,3 +20,11 @@ else
   puts "Bummer. Computer Wins."
 end
 
+puts "would you like to play again? (yes/no)"
+ask_again=gets.chomp
+if ask_again == 'yes'
+  puts "Game is starting over...."
+else
+  puts "Good-Bye"
+end
+end
