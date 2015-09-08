@@ -27,12 +27,7 @@ while ask_again != 'no'
 
   type_of_operation
   command=gets.chomp
-  until command =~ /\w+/
-  puts "Please enter a valid command only."
-  command=gets.chomp
-  end
   
- 
   if command == "add"
     result = num1.to_f + num2.to_f
   elsif command == "subtract"
