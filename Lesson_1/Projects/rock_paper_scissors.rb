@@ -27,23 +27,23 @@ end
 ask_again = " "
 while ask_again != 'no'
 
-begin
-puts "Choose one: (rock/paper/scissors)"
-player_choice=gets.chomp
-end until CHOICES.include?(player_choice)
+  begin
+  puts "Choose one: (rock/paper/scissors)"
+  player_choice=gets.chomp
+  end until CHOICES.include?(player_choice)
 
-computer_choice=CHOICES.sample
+  computer_choice=CHOICES.sample
 
-if player_choice == computer_choice
-  tie_message(player_choice)
-  puts "It's a Tie!"
-elsif (player_choice == 'paper' && computer_choice == 'rock') || (player_choice=='rock' && computer_choice== 'scissors') ||(player_choice == 'scissors' && computer_choice=='paper')
-  winning_message(player_choice)
-  puts "Congratulations! You win!"
-else
-  winning_message(computer_choice)
-  puts "Bummer. Computer Wins."
-end
+  if player_choice == computer_choice
+    tie_message(player_choice)
+    puts "It's a Tie!"
+  elsif (player_choice == 'paper' && computer_choice == 'rock') || (player_choice=='rock' && computer_choice== 'scissors') ||(player_choice == 'scissors' && computer_choice=='paper')
+    winning_message(player_choice)
+    puts "Congratulations! You win!"
+  else
+    winning_message(computer_choice)
+    puts "Bummer. Computer Wins."
+  end
 
 puts "would you like to play again? (yes/no)"
 ask_again=gets.chomp
