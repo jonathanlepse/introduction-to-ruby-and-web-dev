@@ -1,6 +1,6 @@
 def initialize_board
   board = {}
-  (1..9).each {|position| board[position] = ' ' }
+  (1..9).each {|position| board[position] = ' ' } # you can't hard code this hash here b/c you need to use board[position]= whatever elsewhere in the program
   board # this hash here is going to be filled up each time it is passed into another method, thats why it is stored in a board variable on line 58
 end
 
