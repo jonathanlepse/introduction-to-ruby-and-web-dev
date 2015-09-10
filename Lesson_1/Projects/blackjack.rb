@@ -1,32 +1,29 @@
-=begin
-dealer deals 2 cards to himself and player
-player goes first decides to hit or stay
-if player cards sum to 21 player wins # check total method goes insde this method
-  if player cards sum to over 21 player loses
-  else hit #check total
-    stay #check total again
-    if stay total of cards is saved 
-dealers turn
-dealer must hit until cards sum 17 or higher
-if 21 wins
-  if over 21 busts
-    if dealer stays total value is saved
-      compare the two hands higher value wins.
-=end
-
-def initialize_deck
-  cards=["A","A","A","A","2",'2','2','2','3','3','3','3','4','4','4','4','5','5','5','5','6','6','6','6','7','7','7','7','8','8','8','8','9','9','9','9','10','10','10','10','J','J','J','J','Q','Q','Q','Q','K','K','K','K']
+def calculate_total(cards)
 end
 
-def deal(cards)
-cards.shuffle!.pop
-end
-      
-      
-      
-      
+cards=['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+suits=['H', 'D', 'S', 'C']
 
-cards=initialize_deck
+deck=cards.product(suits)
+deck.shuffle!
 
+#deal
 
-puts deal(cards)
+my_cards=[]
+dealer_cards=[]
+
+my_cards << deck.pop
+dealer_cards << deck.pop # begin end until stay || bust if bust puts winning message, break
+my_cards << deck.pop
+dealer_cards << deck.pop
+
+#calculate
+
+dealer_total=calculate_total(dealer_cards)
+my_total= calculate_total(my_cards)
+
+#show
+puts "Dealer has #{dealer_cards[0]} and #{dealer_cards[1]}} for a total of #{dealer_total}"
+puts "You have #{my_cards[0]} and #{my_cards[1]} for a total of #{my_total}"
+puts "What would you like to do? 1)hit 2)stay"
+hit_or_stay = gets.chomp
