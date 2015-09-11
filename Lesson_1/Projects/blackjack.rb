@@ -21,8 +21,26 @@ def calculate_total(cards)
   total
 end
 
+def display_welcome
+  puts "Welcome to Blackjack!"
+end
+
+def display_start_game
+  puts "Shuffling the deck and preparing to deal."
+  puts
+end
+
+def format_game_board(character = "-")
+  puts character * 50
+end
+
 play_again = " "
 while play_again != 'no'
+
+  display_welcome
+  display_start_game
+  format_game_board()
+  
 
   cards=['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
   suits=['H', 'D', 'S', 'C']
@@ -44,14 +62,21 @@ while play_again != 'no'
   my_total= calculate_total(my_cards) # begin end until stay || bust if bust puts winning message, break
 
 #show
-  puts "Dealer has #{dealer_cards[0]} and #{dealer_cards[1]}} for a total of #{dealer_total}"
-  puts "You have #{my_cards[0]} and #{my_cards[1]} for a total of #{my_total}"
+  puts "Dealer has: #{dealer_cards[0]} and #{dealer_cards[1]}} for a total of: #{dealer_total}"
+  format_game_board()
+  puts "You have: #{my_cards[0]} and #{my_cards[1]} for a total of: #{my_total}"
+  format_game_board()
 
   if my_total == 21
-  puts "Blackjack! You win"
+    puts "Blackjack! You win"
   break
-  end# an exit command ends the program, you can use it just like you would break or next 
-
+  end #an exit command ends the program, you can use it just like you would break or next
+  
+  if dealer_total == 21
+    puts "Dealer has Blackjack. You Lose."
+  break
+  end
+    
   while my_total < 21
    puts "What would you like to do? 1) hit 2) stay"
     hit_or_stay = gets.chomp
@@ -72,6 +97,7 @@ while play_again != 'no'
       
     elsif hit_or_stay == "2"
       puts "You chose to stay. Dealer's turn."
+      format_game_board()
       break
     
     else !['1','2'].include?(hit_or_stay)
@@ -103,6 +129,8 @@ while play_again != 'no'
   elsif dealer_total == my_total
     puts "Push, its a tie. The house wins by default because the house always wins."
   end
+  
+  format_game_board()
   
   puts "Dealer Cards:"
   dealer_cards.each do |card|
