@@ -95,7 +95,7 @@ while play_again != 'no'
       puts " Dealer Busts. You Win!"
     end
   end
-
+  
   if dealer_total > my_total && dealer_total < 21
     puts "Dealer has: #{dealer_total} and you have: #{my_total} The house wins sucker!!! Don't you know the house always wins. MUAHAHAHA!"
   elsif dealer_total < my_total && my_total < 21
@@ -103,16 +103,20 @@ while play_again != 'no'
   elsif dealer_total == my_total
     puts "Push, its a tie. The house wins by default because the house always wins."
   end
+  
+  puts "Dealer Cards:"
+  dealer_cards.each do |card|
+  puts "#{card}"
+  end 
+  
+  puts "Your Cards:"
+  my_cards.each do |card|
+    puts "#{card}"
+  end
 
 puts "Would you like to play another hand?(yes/no)"
 play_again = gets.chomp
-loop_counter=0
 if play_again == 'yes'
-   loop_counter +=1
-   if loop_counter == 5
-     puts "Seek help. Your not allowed to play again at this moment."
-     break
-   end
   puts "Looks like we got a card shark on our hands......Lets play again."
 elsif play_again == 'no'
   puts "Didn't think so chump. Hit the bricks."
@@ -120,3 +124,4 @@ else
   puts "You must choose yes or no, otherwise casino security is gonna rough you up on the way out."
 end
 end
+
