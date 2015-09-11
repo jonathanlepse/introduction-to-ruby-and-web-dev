@@ -1,4 +1,24 @@
 def calculate_total(cards)
+  arr = cards.map { |e| e[0] }
+
+  total=0
+  arr.each do |value|
+    if value == "A"
+      total += 11
+    elsif value.to_i == 0
+      total += 10
+    else
+      total += value.to_i
+    end
+  end
+
+  arr.select { |e| e == "A"}.count.times do
+    if total > 21
+      total -= 10
+    end
+  end
+
+  total
 end
 
 cards=['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
