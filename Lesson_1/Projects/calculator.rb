@@ -14,10 +14,13 @@ while ask_again != 'no'
   enter_number
   num1=gets.chomp
   until num1 =~ /\d+/
-  puts "Please enter a valid number only." # or use a resuce command   result = Integer(gets.chomp) rescue nil
-                                                                       # while result == nil do
-                                                                       # puts "Oops! You have entered a non-numeric value, Try Again"
-                                                                       # result = Integer(gets.chomp) rescue nil
+  puts "Please enter a valid number only." # or use a resuce command    #puts "enter a number"
+                                                                        #num1 = Float(gets.chomp) rescue nil 
+                                                                        #while num1 == nil do
+                                                                        #puts " you must enetr a valid number"
+                                                                        #num1 = Float(gets.chomp) rescue nil
+                                                                        #end
+                                                                        #puts num1
   num1=gets.chomp
   end
   
