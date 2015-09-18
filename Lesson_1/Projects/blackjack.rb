@@ -142,10 +142,16 @@ while play_again != 'no'
     puts "#{card}"
   end
 
+loop_counter=0
 puts "Would you like to play another hand?(yes/no)"
 play_again = gets.chomp
 if play_again == 'yes'
+  loop_counter += 1
   puts "Looks like we got a card shark on our hands......Lets play again."
+  if loop_counter == 3
+    puts "You cannot play again. Please seek professional help for your gambling addiction"
+    exit
+  end
 elsif play_again == 'no'
   puts "Didn't think so chump. Hit the bricks."
 else
