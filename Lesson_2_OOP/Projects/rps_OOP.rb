@@ -4,13 +4,15 @@ class Hand
   attr_reader :value
   
   def initialize(v)
-    @value=v
+    @value = v
   end
   
   def <=>(another_hand)
     if @value == another_hand.value
       0
-    elsif (@value=='p' && another_hand.value == 'r') || (@value=='r' && another_hand.value == 's') || (@value=='s' && another_hand.value == 'p') 
+    elsif (@value =='p' && another_hand.value == 'r') || 
+          (@value =='r' && another_hand.value == 's') || 
+          (@value =='s' && another_hand.value == 'p') 
       1
     else
       -1
@@ -20,7 +22,7 @@ class Hand
   def display_winning_message
     case @value
     when 'p'
-      puts "Paper wraps rock."
+      puts "Paper wraps rock." 
     when 'r'
       puts "rock covers sciccors"
     when 's'
@@ -47,16 +49,16 @@ class Human < Player
   def pick_hand
     begin
     puts "pick one: (r,p,s)"
-    c=gets.chomp.downcase
-    end until Game::CHOICES.keys.include?(c)
+    choice = gets.chomp.downcase
+    end until Game::CHOICES.keys.include?(choice)
     
-    self.hand = Hand.new(c) # you havent gotten a value yet for hand so you have to call the setter method self.hand in order to get a value than later in your code you can call hand from the getter method
+    self.hand = Hand.new(choice) # you havent gotten a value yet for hand so you have to call the setter method self.hand in order to get a value than later in your code you can call hand from the getter method in player on line 35 and reference it for use on line 76
   end
 end
 
 class Computer < Player
   def pick_hand
-    self.hand=Hand.new(Game::CHOICES.keys.sample) # you havent gotten a value yet for hand so you have to call the setter method  self.hand in order to get a value than later in your code you can call hand from the getter method
+    self.hand=Hand.new(Game::CHOICES.keys.sample) # you havent gotten a value yet for hand so you have to call the setter method  self.hand in order to get a value than later in your code you can call hand from the getter method in player on line 35 and reference it for use on line 82
   end
 end
 
@@ -71,20 +73,23 @@ class Game
   end
   
   def compare_hands
-    if player.hand == computer.hand # referenceing the hand getter method here b/c you have access to it b/c you set it on line 53 and 59
+    if player.hand == computer.hand # here you are referencing the hand getter method which you have access to b/c player is an object of Human class, player has access to all of Humans instance method and Human inherits from Player class so hand is the getter method from player which human has access to.
+      puts "You chose #{player.hand} and the computer chose #{computer.hand}"
       puts "It's a Tie."
     elsif player.hand > computer.hand
-      player.hand.display_winning_message
-      puts "#{player} won!"
+      puts "You chose #{player.hand} and the computer chose #{computer.hand}"
+      player.hand.display_winning_message# you've created a player object that has access to Human class, in that class you created a hand object which has access to Hand class, hence you have to climb the ladder and say player.hand.display_winning_message, player.hand are both objects.
+      puts "#{player.name} won!"
     else
+      puts "You chose #{player.hand} and the computer chose #{computer.hand}"
       computer.hand.display_winning_message
-      puts "#{computer} won!"
+      puts "#{computer.name} won!"
     end
   end
   
   def play
     loop do
-    player.pick_hand
+    player.pick_hand # player is an object of Human class so it has access to Humans instance methods (pick_hand is an instance method of Human class)
     computer.pick_hand
     compare_hands
     puts "Play Again? (y/n)"
@@ -94,7 +99,7 @@ class Game
   end
 end
 
-game = Game.new
-game.play
-puts Game.ancestors
+game = Game.new.play # this just saves a line instead of writing on the next line game.play
+
+
 
