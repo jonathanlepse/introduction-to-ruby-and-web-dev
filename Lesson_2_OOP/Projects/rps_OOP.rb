@@ -74,14 +74,11 @@ class Game
   
   def compare_hands
     if player.hand == computer.hand # here you are referencing the hand getter method which you have access to b/c player is an object of Human class, player has access to all of Humans instance method and Human inherits from Player class so hand is the getter method from player which human has access to.
-      puts "You chose #{player.hand} and the computer chose #{computer.hand}"
       puts "It's a Tie."
     elsif player.hand > computer.hand
-      puts "You chose #{player.hand} and the computer chose #{computer.hand}"
       player.hand.display_winning_message# you've created a player object that has access to Human class, in that class you created a hand object which has access to Hand class, hence you have to climb the ladder and say player.hand.display_winning_message, player.hand are both objects.
       puts "#{player.name} won!"
     else
-      puts "You chose #{player.hand} and the computer chose #{computer.hand}"
       computer.hand.display_winning_message
       puts "#{computer.name} won!"
     end
