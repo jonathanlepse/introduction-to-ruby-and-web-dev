@@ -76,10 +76,10 @@ class Game
     if player.hand == computer.hand # here you are referencing the hand getter method which you have access to b/c player is an object of Human class, player has access to all of Humans instance method and Human inherits from Player class so hand is the getter method from player which human has access to.
       puts "It's a Tie."
     elsif player.hand > computer.hand
-      player.hand.display_winning_message# you've created a player object that has access to Human class, in that class you created a hand object which has access to Hand class, hence you have to climb the ladder and say player.hand.display_winning_message, player.hand are both objects.
+      player.hand.display_winning_message# here you want the player object to have access to the Hand class instance method display_winning_message, in order to do so you need to CLIMB THE LADDER, the hand object has access to dispaly_winning_message, that object was created in the Human class so you have to call the computer object on the hand object which is then calling the display_winnning_message insatnce method.
       puts "#{player.name} won!"
     else
-      computer.hand.display_winning_message
+      computer.hand.display_winning_message # here you want the computer object to have access to the Hand class instance method display_winning_message, in order to do so you need to CLIMB THE LADDER, the hand object has access to dispaly_winning_message, that object was created in the Computer class so you have to call the computer object on the hand object which is then calling the display_winnning_message insatnce method.
       puts "#{computer.name} won!"
     end
   end
@@ -88,7 +88,7 @@ class Game
     loop do
     player.pick_hand # player is an object of Human class so it has access to Humans instance methods (pick_hand is an instance method of Human class)
     computer.pick_hand
-    compare_hands
+    compare_hands # this method contains the player and computer objects which have access to hand object which is how in this method you can call hands instance methods
     puts "Play Again? (y/n)"
     play_again=gets.chomp.downcase
     break if play_again == 'n'
